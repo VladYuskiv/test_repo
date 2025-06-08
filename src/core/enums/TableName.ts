@@ -1,4 +1,4 @@
 export enum TableName {
-	PRODUCTS = 'products',
-	USERS = 'users'
+  PRODUCTS = 'products',
+  USERS = 'users',
 }

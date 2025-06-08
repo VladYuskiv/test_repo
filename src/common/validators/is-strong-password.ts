@@ -1,4 +1,11 @@
-import { isNotEmpty, matches, maxLength, minLength, registerDecorator, ValidationOptions, } from 'class-validator';
+import {
+  isNotEmpty,
+  matches,
+  maxLength,
+  minLength,
+  registerDecorator,
+  ValidationOptions,
+} from 'class-validator';
 
 export const IsStrongPassword = (validationOptions?: ValidationOptions) => {
   return function (object: Object, propertyName: string) {
@@ -12,7 +19,8 @@ export const IsStrongPassword = (validationOptions?: ValidationOptions) => {
           const isEmpty = !isNotEmpty(value);
           const isTooShort = !minLength(value, 8);
           const isTooLong = !maxLength(value, 255);
-          const pattern = /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+          const pattern =
+            /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
           const doesNotMatchPattern = !matches(value, pattern);
 
           return !(isEmpty || isTooShort || isTooLong || doesNotMatchPattern);
@@ -23,4 +31,4 @@ export const IsStrongPassword = (validationOptions?: ValidationOptions) => {
       },
     });
   };
-}
+};

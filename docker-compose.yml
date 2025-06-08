@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_database
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data:z
+    env_file: .env
+
+  api:
+    restart: always
+    container_name: api
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./src:/usr/src/app/src
+      - ./e2e:/usr/src/app/e2e
+    links:
+      - postgres:postgres
+    depends_on:
+      - postgres
+    ports:
+      - ${API_PORT}:${API_PORT}
+    env_file: .env

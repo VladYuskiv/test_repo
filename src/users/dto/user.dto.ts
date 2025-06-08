@@ -1,7 +1,7 @@
-import { UUID } from "crypto";
+import { UUID } from 'crypto';
 
 export class UserDto {
-	id: UUID;
-	fullName: string;
-	email: string;
+  id: UUID;
+  fullName: string;
+  email: string;
 }

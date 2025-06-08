@@ -1,4 +1,4 @@
 export enum ModelName {
-	PRODUCT = 'Product',
-	USER = 'User'
+  PRODUCT = 'Product',
+  USER = 'User',
 }

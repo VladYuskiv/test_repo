@@ -1,16 +1,16 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { SignUpDto } from "@/auth/dto/sign-up.dto";
-import { UsersService } from "@/users/users.service";
-import { TokenDto } from "@/auth/dto/token.dto";
-import { JwtService } from "@nestjs/jwt";
-import { SignInDto } from "@/auth/dto/sign-in.dto";
-import User from "@/users/models/user.model";
+import { SignUpDto } from '@/auth/dto/sign-up.dto';
+import { UsersService } from '@/users/users.service';
+import { TokenDto } from '@/auth/dto/token.dto';
+import { JwtService } from '@nestjs/jwt';
+import { SignInDto } from '@/auth/dto/sign-in.dto';
+import User from '@/users/models/user.model';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly usersService: UsersService,
-    private readonly jwtService: JwtService
+    private readonly jwtService: JwtService,
   ) {}
 
   public async signUp(data: SignUpDto): Promise<TokenDto> {
@@ -21,10 +21,9 @@ export class AuthService {
   public async signIn(data: SignInDto): Promise<TokenDto> {
     const user = await this.usersService.findByEmail(data.email);
 
-    if (!user)
-      throw new UnauthorizedException(`Incorrect email or password.`);
+    if (!user) throw new UnauthorizedException(`Incorrect email or password.`);
 
-    if (!await this.usersService.comparePassword(user, data.password))
+    if (!(await this.usersService.comparePassword(user, data.password)))
       throw new UnauthorizedException(`Incorrect email or password.`);
 
     return await this.generateToken(user);

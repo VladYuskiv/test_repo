@@ -8,6 +8,6 @@ import { validate } from './env.validation';
       isGlobal: true,
       validate,
     }),
-  ]
+  ],
 })
 export class EnvironmentModule {}

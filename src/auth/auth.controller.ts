@@ -1,12 +1,26 @@
-import { Controller, Get, Post, Body, HttpCode, HttpStatus, UseGuards, Req } from '@nestjs/common';
-import { ApiBadRequestResponse, ApiBearerAuth, ApiTags, ApiUnauthorizedResponse } from "@nestjs/swagger";
-import { AuthService } from "@/auth/auth.service";
-import { SignUpDto } from "@/auth/dto/sign-up.dto";
-import { TokenDto } from "@/auth/dto/token.dto";
-import { AuthGuard } from "@/auth/auth.guard";
-import { SignInDto } from "@/auth/dto/sign-in.dto";
-import { UserDto } from "@/users/dto/user.dto";
-import User from "@/users/models/user.model";
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  HttpCode,
+  HttpStatus,
+  UseGuards,
+  Req,
+} from '@nestjs/common';
+import {
+  ApiBadRequestResponse,
+  ApiBearerAuth,
+  ApiTags,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
+import { AuthService } from '@/auth/auth.service';
+import { SignUpDto } from '@/auth/dto/sign-up.dto';
+import { TokenDto } from '@/auth/dto/token.dto';
+import { AuthGuard } from '@/auth/auth.guard';
+import { SignInDto } from '@/auth/dto/sign-in.dto';
+import { UserDto } from '@/users/dto/user.dto';
+import User from '@/users/models/user.model';
 
 @Controller('auth')
 @ApiTags('Auth')
@@ -19,7 +33,9 @@ export class AuthController {
    */
   @Post('sign-up')
   @HttpCode(HttpStatus.CREATED)
-  @ApiBadRequestResponse({ description: `User with the same email already exists` })
+  @ApiBadRequestResponse({
+    description: `User with the same email already exists`,
+  })
   public async signUp(@Body() signUpDto: SignUpDto): Promise<TokenDto> {
     return await this.authService.signUp(signUpDto);
   }
@@ -48,8 +64,8 @@ export class AuthController {
 
     return {
       id: user.id,
-	    email: user.email,
-	    fullName: user.fullName
-    }
+      email: user.email,
+      fullName: user.fullName,
+    };
   }
 }

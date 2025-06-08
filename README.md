@@ -3,6 +3,7 @@
 RESTful API for products built using NestJS framework + TypeScript.
 
 Main features:
+
 - CRUD operations for products (including pagination, autotrimming, validation, name uniqueness)
 - Authorization with JWT (sign-in, sign-up for the user)
 - PostgreSQL database with Sequelize ORM (including migrations)
@@ -11,6 +12,7 @@ Main features:
 - Cloud deployment with Docker on AWS
 
 Plans for:
+
 - Request caching using Redis
 - CI/CD
 
@@ -36,4 +38,3 @@ $ npm run start:prod
 # e2e tests
 $ npm run test:e2e
 ```
-

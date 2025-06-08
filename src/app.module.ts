@@ -1,16 +1,16 @@
 import { Logger, Module } from '@nestjs/common';
-import { EnvironmentModule, EnvironmentVariables } from "@env";
-import { SwaggerModule } from "@nestjs/swagger";
+import { EnvironmentModule, EnvironmentVariables } from '@env';
+import { SwaggerModule } from '@nestjs/swagger';
 import { ProductsModule } from './products/products.module';
-import { SequelizeModule } from "@nestjs/sequelize";
-import { ConfigModule, ConfigService } from "@nestjs/config";
-import Product from "@/products/models/product.model";
-import { UsersModule } from "@/users/users.module";
-import { AuthModule } from "@/auth/auth.module";
-import { ExceptionFiltersModule } from "@common/filters/exception-filters.module";
-import User from "@/users/models/user.model";
+import { SequelizeModule } from '@nestjs/sequelize';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import Product from '@/products/models/product.model';
+import { UsersModule } from '@/users/users.module';
+import { AuthModule } from '@/auth/auth.module';
+import { ExceptionFiltersModule } from '@common/filters/exception-filters.module';
+import User from '@/users/models/user.model';
 
-const databaseLogger = new Logger('Database')
+const databaseLogger = new Logger('Database');
 
 @Module({
   imports: [
@@ -26,11 +26,16 @@ const databaseLogger = new Logger('Database')
         synchronize: false,
         autoLoadModels: true,
         models: [Product, User],
-        logging: (message) => databaseLogger.debug(message)
+        logging: (message) => databaseLogger.debug(message),
       }),
       inject: [ConfigService],
     }),
-    EnvironmentModule, SwaggerModule, AuthModule, ProductsModule, UsersModule, ExceptionFiltersModule
-  ]
+    EnvironmentModule,
+    SwaggerModule,
+    AuthModule,
+    ProductsModule,
+    UsersModule,
+    ExceptionFiltersModule,
+  ],
 })
-export class AppModule { }
+export class AppModule {}
