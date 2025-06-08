@@ -1,4 +1,4 @@
-# Test Task for Lazy Ants
+# Test Repo
 
 RESTful API for products built using NestJS framework + TypeScript.
 
