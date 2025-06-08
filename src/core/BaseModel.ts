@@ -3,11 +3,13 @@ import { FindAndCountOptions } from 'sequelize';
 import { PaginatedResponseDto } from '@common/dto/paginated-response.dto';
 
 export class BaseModel<
-  TAttributes extends {},
-  TCreationAttributes extends {},
+  TAttributes extends NonNullable<unknown>,
+  TCreationAttributes extends NonNullable<unknown>,
 > extends Model<TAttributes, TCreationAttributes> {
   public static async paginate<TModel extends BaseModel<any, any>>(
-    options: Omit<FindAndCountOptions<{}>, 'group'> | undefined = {},
+    options:
+      | Omit<FindAndCountOptions<NonNullable<unknown>>, 'group'>
+      | undefined = {},
   ): Promise<PaginatedResponseDto<TModel>> {
     const limit: number = options?.limit || 10;
     const offset: number = options?.offset || 0;
