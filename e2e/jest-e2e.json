@@ -1,0 +1,23 @@
+{
+  "rootDir": "../",
+  "moduleNameMapper": {
+    "@/(.*)": "<rootDir>/src/$1",
+    "@core/(.*)": "<rootDir>/src/core/$1",
+    "@common/(.*)": "<rootDir>/src/common/$1",
+    "@env": "<rootDir>/src/core/config/env",
+    "@constants/(.*)": "<rootDir>/src/core/constants/$1",
+    "@enums/(.*)": "<rootDir>/src/core/enums/$1"
+  },
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js",
+    "json"
+  ],
+  "transform": {
+    "^.+\\.tsx?$": "ts-jest"
+  },
+  "testRegex": "/e2e/.*\\.(e2e-test|e2e-spec).(ts|tsx|js)$",
+  "collectCoverageFrom" : ["src/**/*.{js,jsx,tsx,ts}", "!**/node_modules/**", "!**/vendor/**"],
+  "coverageReporters": ["json", "lcov"]
+}

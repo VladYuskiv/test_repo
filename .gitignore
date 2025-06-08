@@ -1,0 +1,10 @@
+node_modules
+.idea
+.DS_store
+dist
+logs
+data
+docker-compose.yml
+Dockerfile
+.env
+
