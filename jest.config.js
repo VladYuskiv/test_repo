@@ -6,6 +6,7 @@ module.exports = {
   testRegex: '.*\\.spec\\.ts$',
   collectCoverageFrom: ['src/**/*.(t|j)s'],
   coverageDirectory: './coverage',
+  coverageReporters: ['text', 'lcov', 'cobertura'],
   moduleNameMapper: {
     '^@env$': '<rootDir>/src/core/config/env',
     '^@src/(.*)$': '<rootDir>/src/$1',
