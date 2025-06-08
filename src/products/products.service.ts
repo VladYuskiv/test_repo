@@ -90,4 +90,8 @@ export class ProductsService {
     }
     return await Product.count();
   }
+
+  public getHello(): string {
+    return 'Hello from Products!';
+  }
 }

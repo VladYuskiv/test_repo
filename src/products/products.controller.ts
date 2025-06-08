@@ -164,4 +164,10 @@ export class ProductsController {
     const count = await this.productsService.getTotalCount(category);
     return { count };
   }
+
+  @Get('hello')
+  @HttpCode(HttpStatus.OK)
+  public getHello(): string {
+    return this.productsService.getHello();
+  }
 }

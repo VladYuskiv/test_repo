@@ -235,4 +235,10 @@ describe('ProductsService', () => {
       expect(Product.count).toHaveBeenCalledWith({ where: { category } });
     });
   });
+
+  describe('getHello', () => {
+    it('should return "Hello from Products!"', () => {
+      expect(service.getHello()).toBe('Hello from Products!');
+    });
+  });
 });
