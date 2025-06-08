@@ -23,7 +23,7 @@ export class PaginatedResponseData {
   previousPageExists: boolean;
 }
 
-export class PaginatedResponseDto<T extends {}> {
+export class PaginatedResponseDto<T extends NonNullable<unknown>> {
   @ApiProperty({ isArray: true })
   records: T[];
 

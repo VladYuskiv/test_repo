@@ -8,7 +8,7 @@ import {
 } from 'class-validator';
 
 export const IsStrongPassword = (validationOptions?: ValidationOptions) => {
-  return function (object: Object, propertyName: string) {
+  return function (object: NonNullable<unknown>, propertyName: string) {
     registerDecorator({
       name: 'isStrongPassword',
       target: object.constructor,

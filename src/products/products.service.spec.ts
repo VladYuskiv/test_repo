@@ -217,4 +217,14 @@ describe('ProductsService', () => {
       });
     });
   });
+
+  describe('getTotalCount', () => {
+    it('should return total count of products', async () => {
+      const mockCount = 42;
+      jest.spyOn(Product, 'count').mockResolvedValue(mockCount);
+      const result = await service.getTotalCount();
+      expect(result).toBe(mockCount);
+      expect(Product.count).toHaveBeenCalled();
+    });
+  });
 });

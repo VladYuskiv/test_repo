@@ -14,7 +14,7 @@ export const defaultUser = {
 
 export default {
   up: async (queryInterface: QueryInterface) => {
-    let user = defaultUser;
+    const user = defaultUser;
 
     user.password = await bcrypt.hash(
       user.password,

@@ -1,4 +1,4 @@
-export const pick = <T extends {}, K extends keyof T>(
+export const pick = <T extends NonNullable<unknown>, K extends keyof T>(
   obj: T,
   keys: K[],
 ): Pick<T, K> => {

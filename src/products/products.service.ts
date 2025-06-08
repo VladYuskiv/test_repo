@@ -83,4 +83,8 @@ export class ProductsService {
       ...pagination,
     });
   }
+
+  public async getTotalCount(): Promise<number> {
+    return await Product.count();
+  }
 }
