@@ -71,4 +71,16 @@ export class ProductsService {
 
     return Boolean(await product.destroy());
   }
+
+  public async findByCategory(
+    category: string,
+    pagination: PaginationDto,
+    attributes?: (keyof Product)[],
+  ): Promise<PaginatedResponseDto<Product>> {
+    return await Product.paginate({
+      attributes,
+      where: { category } as any,
+      ...pagination,
+    });
+  }
 }
