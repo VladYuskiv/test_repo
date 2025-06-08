@@ -224,7 +224,15 @@ describe('ProductsService', () => {
       jest.spyOn(Product, 'count').mockResolvedValue(mockCount);
       const result = await service.getTotalCount();
       expect(result).toBe(mockCount);
-      expect(Product.count).toHaveBeenCalled();
+      expect(Product.count).toHaveBeenCalledWith();
+    });
+    it('should return count of products for a category', async () => {
+      const mockCount = 10;
+      const category = 'Test Category';
+      jest.spyOn(Product, 'count').mockResolvedValue(mockCount);
+      const result = await service.getTotalCount(category);
+      expect(result).toBe(mockCount);
+      expect(Product.count).toHaveBeenCalledWith({ where: { category } });
     });
   });
 });

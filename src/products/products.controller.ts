@@ -158,8 +158,10 @@ export class ProductsController {
    */
   @Get('count')
   @HttpCode(HttpStatus.OK)
-  public async getTotalCount(): Promise<{ count: number }> {
-    const count = await this.productsService.getTotalCount();
+  public async getTotalCount(
+    @Query('category') category?: string,
+  ): Promise<{ count: number }> {
+    const count = await this.productsService.getTotalCount(category);
     return { count };
   }
 }
