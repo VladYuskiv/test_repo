@@ -23,7 +23,6 @@ const mockProduct = {
 
 describe('ProductsService', () => {
   let service: ProductsService;
-  let model: typeof Product;
 
   const mockProductModel = {
     paginate: jest.fn(),
@@ -51,7 +50,6 @@ describe('ProductsService', () => {
     }).compile();
 
     service = module.get<ProductsService>(ProductsService);
-    model = module.get<typeof Product>(getModelToken(Product));
   });
 
   it('should be defined', () => {
@@ -181,6 +179,42 @@ describe('ProductsService', () => {
       const id = 'not-found-id' as UUID;
       jest.spyOn(Product, 'findByPk').mockResolvedValue(null as any);
       await expect(service.delete(id)).rejects.toThrow(NotFoundException);
+    });
+  });
+
+  describe('findByCategory', () => {
+    it('should return paginated products by category', async () => {
+      const category = 'Test Category';
+      const pagination: PaginationDto = { limit: 10, offset: 0 };
+      const mockRows = [mockProduct];
+      const mockCount = 1;
+      const mockPagination = {
+        total: mockCount,
+        totalPages: 1,
+        currentPage: 1,
+        nextPageExists: false,
+        previousPageExists: false,
+      };
+      jest.spyOn(Product, 'paginate').mockResolvedValue({
+        records: mockRows,
+        pagination: mockPagination,
+      } as any);
+      const result = await service.findByCategory(category, pagination);
+      expect(result).toEqual({
+        records: mockRows,
+        pagination: expect.objectContaining({
+          total: mockCount,
+          totalPages: expect.any(Number),
+          currentPage: expect.any(Number),
+          nextPageExists: expect.any(Boolean),
+          previousPageExists: expect.any(Boolean),
+        }),
+      });
+      expect(Product.paginate).toHaveBeenCalledWith({
+        attributes: undefined,
+        where: { category },
+        ...pagination,
+      });
     });
   });
 });

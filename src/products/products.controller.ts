@@ -134,4 +134,22 @@ export class ProductsController {
   public async remove(@Param('id', ParseUUIDPipe) id: UUID): Promise<void> {
     await this.productsService.delete(id);
   }
+
+  /**
+   * Retrieves products by category.
+   * Pagination params can be passed in the query params.
+   */
+  @Get('category/:category')
+  @HttpCode(HttpStatus.OK)
+  @ApiPaginatedResponse(ProductDto)
+  public async findByCategory(
+    @Param('category') category: string,
+    @Query() pagination: PaginationDto,
+  ): Promise<PaginatedResponseDto<ProductDto>> {
+    return (await this.productsService.findByCategory(
+      category,
+      pagination,
+      this.productsAttributes,
+    )) as PaginatedResponseDto<ProductDto>;
+  }
 }
