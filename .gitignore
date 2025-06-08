@@ -5,4 +5,4 @@ dist
 logs
 data
 .env
-
+coverage
