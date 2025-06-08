@@ -34,17 +34,6 @@ jobs:
       - name: Build application
         run: npm run build
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-
-      - name: Install junit2sonarqube
-        run: pip install junit2sonarqube
-
-      - name: Convert JUnit XML to SonarQube Generic Test Data
-        run: junit2sonarqube reports/junit/js-test-results.xml reports/junit/sonar-test-report.xml
-
       - name: Run SonarQube analysis
         uses: SonarSource/sonarqube-scan-action@master
         env:

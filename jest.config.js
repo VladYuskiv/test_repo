@@ -26,5 +26,12 @@ module.exports = {
         outputName: 'js-test-results.xml',
       },
     ],
+    [
+      '@casualbot/jest-sonar-reporter',
+      {
+        outputDirectory: 'reports/junit',
+        outputName: 'sonar-test-report.xml',
+      },
+    ],
   ],
 };
