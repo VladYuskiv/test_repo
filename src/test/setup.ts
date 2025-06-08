@@ -1,6 +1,4 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { SequelizeModule } from '@nestjs/sequelize';
-import { ConfigModule } from '@nestjs/config';
 
 // Мок для Sequelize
 jest.mock('@nestjs/sequelize', () => ({

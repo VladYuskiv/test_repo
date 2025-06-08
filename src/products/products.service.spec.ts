@@ -23,7 +23,6 @@ const mockProduct = {
 
 describe('ProductsService', () => {
   let service: ProductsService;
-  let model: typeof Product;
 
   const mockProductModel = {
     paginate: jest.fn(),
@@ -51,7 +50,6 @@ describe('ProductsService', () => {
     }).compile();
 
     service = module.get<ProductsService>(ProductsService);
-    model = module.get<typeof Product>(getModelToken(Product));
   });
 
   it('should be defined', () => {
