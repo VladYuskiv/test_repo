@@ -43,7 +43,7 @@ jobs:
           args: >
             -Dsonar.projectKey=VladYuskiv_test_repo
             -Dsonar.sources=src
-            -Dsonar.tests=test
+            -Dsonar.tests=src
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
             -Dsonar.testExecutionReportPaths=test-report.xml
 
