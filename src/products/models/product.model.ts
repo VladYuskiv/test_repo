@@ -10,7 +10,6 @@ import {
 } from 'sequelize-typescript';
 import { TableName } from '@enums/TableName';
 import { UUID } from 'crypto';
-import { Exclude } from 'class-transformer';
 
 // NOTE: Category should be as a separate model, but for the sake of simplicity, I will keep it here.
 // NOTE: Price field is a string, but in database it is stored as decimal. Work with the price as a string should be done using libraries like decimal.js or big.js.
