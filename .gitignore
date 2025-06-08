@@ -6,4 +6,4 @@ logs
 data
 .env
 coverage
-reports/*
+reports

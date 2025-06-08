@@ -84,7 +84,10 @@ export class ProductsService {
     });
   }
 
-  public async getTotalCount(): Promise<number> {
+  public async getTotalCount(category?: string): Promise<number> {
+    if (category) {
+      return await Product.count({ where: { category } });
+    }
     return await Product.count();
   }
 }
