@@ -152,4 +152,14 @@ export class ProductsController {
       this.productsAttributes,
     )) as PaginatedResponseDto<ProductDto>;
   }
+
+  /**
+   * Retrieves total count of products.
+   */
+  @Get('count')
+  @HttpCode(HttpStatus.OK)
+  public async getTotalCount(): Promise<{ count: number }> {
+    const count = await this.productsService.getTotalCount();
+    return { count };
+  }
 }
