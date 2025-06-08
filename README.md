@@ -14,7 +14,6 @@ Main features:
 Plans for:
 
 - Request caching using Redis
-- CI/CD
 
 ## Installation
 
