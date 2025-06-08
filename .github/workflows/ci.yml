@@ -45,7 +45,7 @@ jobs:
             -Dsonar.sources=src
             -Dsonar.tests=src
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
-            -Dsonar.testExecutionReportPaths=test-report.xml
+            -Dsonar.testExecutionReportPaths=reports/junit/js-test-results.xml
 
       - name: Run security audit
         run: npm audit
